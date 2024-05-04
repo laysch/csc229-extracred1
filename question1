@@ -1,0 +1,51 @@
+// question 1 
+
+import java.util.*;
+
+public class Sort {
+
+    public static void sortAnagrams(String[] arr) {
+        // Use HashMap to store characters and their frequencies
+        HashMap<String, List<String>> map = new HashMap<>();
+
+        for (String str : arr) {
+            // Convert string to lowercase for case-insensitive comparison
+            String sortedStr = sortString(str.toLowerCase());
+
+            // Add the string to the list associated with its sorted form
+            List<String> list = map.getOrDefault(sortedStr, new ArrayList<>());
+            list.add(str);
+            map.put(sortedStr, list);
+        }
+
+        // Clear the original array
+        Arrays.fill(arr, null);
+
+        // Index to keep track of position in the array
+        int index = 0;
+
+        // Iterate through the map and add anagram lists to the array
+        for (List<String> list : map.values()) {
+            for (String anagram : list) {
+                arr[index++] = anagram;
+            }
+        }
+    }
+
+// Helper function to sort a string
+private static String sortString(String str) {
+    char[] charArray = str.toCharArray();
+    Arrays.sort(charArray);
+    return new String(charArray);
+}
+
+    public static void main(String[] args) {
+        String[] arr = {"silent", "listen", "cat", "act", "tact"};
+        sortAnagrams(arr);
+
+        System.out.println("Sorted Anagrams:");
+        for (String str : arr) {
+            System.out.print(str + " ");
+        }
+    }
+}
