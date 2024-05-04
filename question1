@@ -1,4 +1,5 @@
-// question 1 
+//Problem 01: An anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once. 
+// Given an array of strings, you need to develop a function that sorts the anagrams and display them next to each other. 
 
 import java.util.*;
 
