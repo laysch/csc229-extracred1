@@ -7,7 +7,6 @@ public class PascalTriangleDivisibility {
         int nonDivisibleCount = 0;
         int initialRows = 6; // Maximum rows where entire row is not divisible by 7
 
-        // Explain initial rows contribution
         System.out.println("Initial rows (entirely non-divisible): " + initialRows);
         nonDivisibleCount += 2 * initialRows; // 2 entries per row
 
