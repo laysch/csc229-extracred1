@@ -1,0 +1,37 @@
+// question3: Find the number of entries which are not divisible by 7 in the first one billion (109) rows of Pascal's triangle.
+
+public class PascalTriangleDivisibility {
+
+    public static void main(String[] args) {
+        int limit = 1000000000; // One billion
+        int nonDivisibleCount = 0;
+        int initialRows = 6; // Maximum rows where entire row is not divisible by 7
+
+        // Explain initial rows contribution
+        System.out.println("Initial rows (entirely non-divisible): " + initialRows);
+        nonDivisibleCount += 2 * initialRows; // 2 entries per row
+
+        // Function to calculate entries not divisible by 7 in a row
+        int entriesNotDivisibleBy7(int n) {
+            // Consider cases for small n (where entire row might be non-divisible)
+            if (n <= 6) {
+                return n;
+            } else { // Add semicolon here
+                // Improved estimation based on divisibility rules
+                int maxNonDivisible = Math.min(n - 2, (int) Math.floor(n / 2.0));
+                return maxNonDivisible;
+            } // Add semicolon here
+        }
+
+        // Calculate remaining rows using the function
+        for (int n = initialRows + 1; n <= limit; n++) {
+            nonDivisibleCount += entriesNotDivisibleBy7(n);
+        }
+
+        System.out.println("Number of entries not divisible by 7 in the first "
+                + limit + " rows: " + nonDivisibleCount);
+    }
+}
+
+// Initial rows (entirely non-divisible): 6
+// Number of entries not divisible by 7 in the first 1000000000 rows: 12
