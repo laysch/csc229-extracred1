@@ -1,0 +1,22 @@
+//Problem 02: You are given two sorted arrays A and B where A has a large enough buffer at the end to hold B. 
+// Write a function to merge B into A in sorted order. 
+
+public static void mergingArrays(int[] A, int m, int[] B, int n) { // Start with three pointers
+  int i = m - 1;
+  int j = n - 1;
+  
+  // Current end index of A
+  int k = m + n - 1;
+  
+  // Copy elements from B to the end of A in reverse order
+  while (j >= 0) {
+    if (i >= 0 && A[i] > B[j]) {
+      A[k] = A[i];
+      i--;
+    } else {
+      A[k] = B[j];
+      j--;
+    }
+    k--;
+  }
+}
